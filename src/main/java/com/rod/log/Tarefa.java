@@ -1,6 +1,8 @@
 package com.rod.log;
 
-public class Tarefa {
+import java.util.Date;
+
+public abstract class Tarefa {
 	String titulo;
 	String descricao;
 	String palavraChave;
@@ -23,4 +25,6 @@ public class Tarefa {
 	public void setPalavraChave(String palavraChave) {
 		this.palavraChave = palavraChave;
 	}
+	
+	public abstract String getTipoAtividade();
 }

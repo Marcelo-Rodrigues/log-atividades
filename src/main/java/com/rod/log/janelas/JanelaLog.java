@@ -15,6 +15,7 @@ import javax.swing.JLabel;
 import javax.swing.JTextArea;
 
 import com.rod.log.Tarefa;
+import com.rod.log.acoes.EntradaLog;
 import com.rod.log.controle.AssociadorTarefa;
 
 public class JanelaLog {
@@ -132,12 +133,12 @@ public class JanelaLog {
 		btnConfigurar.addActionListener(configurarListener);
 	}
 
-	public void addSalvarListener(ActionListener salvarListener) {
+	public void addSalvarListener(ActionListener salvarListener) {		
 		btnSalvarLog.addActionListener(salvarListener);
 	}
 
-	public String obterLog() {
-		return txtLog.getText();
+	public EntradaLog obterLog() {
+		return new EntradaLog(txtLog.getText(), tarefaAssociada);
 	}
 
 	public void fecharJanela() {
