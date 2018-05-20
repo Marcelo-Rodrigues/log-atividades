@@ -19,6 +19,7 @@ import com.rod.log.controle.AssociadorTarefa;
 
 public class JanelaLog {
 
+	private static final String ICONE_JANELA = "/tasksdone.png";
 	private static final String DESCRICAO_ATIVIDADE_NAO_ASSOCIADA = "<html>Insira na descrição a palavra chave para associar uma atividade</html>";
 	private AssociadorTarefa associadorTarefa;
 	private JFrame frame;
@@ -41,8 +42,7 @@ public class JanelaLog {
 	 */
 	private void initialize() {
 		frame = new JFrame();
-		frame.setIconImage(
-				Toolkit.getDefaultToolkit().getImage(JanelaLog.class.getResource("/resources/tasksdone.png")));
+		frame.setIconImage(Toolkit.getDefaultToolkit().getImage(JanelaLog.class.getResource(ICONE_JANELA)));
 		frame.setType(Type.NORMAL);
 		frame.setBounds(100, 100, 450, 300);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);

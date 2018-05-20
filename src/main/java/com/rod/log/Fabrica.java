@@ -17,8 +17,6 @@ public class Fabrica {
 	private void inicializarAcoes() {
 		acoes = new ArrayList<>();
 		acoes.add(args -> args.length == 0 ? new GravarLog() : null);
-		
-
 	}
 
 	public Runnable criar(String[] args) {
