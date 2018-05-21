@@ -57,14 +57,8 @@ public class JanelaConfiguracoes extends JDialog {
 		setContentPane(contentPane);
 		contentPane.setLayout(new BorderLayout(0, 0));
 
-		/*
-		 * 
-		 * model = new DefaultTableModel(new Object[][] {}, new String[] {
-		 * "Titulo", "Descrição", "Palavra Chave", "Número da Tarefa (Jira)" });
-		 */
 		JTabbedPane tabbedPane = new JTabbedPane(JTabbedPane.TOP);
 		contentPane.add(tabbedPane, BorderLayout.CENTER);
-
 
 		tarefas = ArquivoConfiguracoes.obterTarefas();
 		model = new TarefaJiraModel(tarefas);
@@ -129,13 +123,13 @@ public class JanelaConfiguracoes extends JDialog {
 		Component horizontalStrut_1 = Box.createHorizontalStrut(20);
 		panel_1.add(horizontalStrut_1);
 
-		/* atualizarTabela(ArquivoConfiguracoes.obterTarefas()); */
-
 		this.pack();
 	}
 
 	private void criarLinha() {
 		tarefas.add(new TarefaJira());
+		if (table.isEditing())
+		    table.getCellEditor().stopCellEditing();
 	}
 
 	private void removerLinha() {

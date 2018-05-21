@@ -14,7 +14,7 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JTextArea;
 
-import com.rod.log.Tarefa;
+import com.rod.log.TarefaJira;
 import com.rod.log.acoes.EntradaLog;
 import com.rod.log.controle.AssociadorTarefa;
 
@@ -28,7 +28,7 @@ public class JanelaLog {
 	private JTextArea txtLog;
 	private JButton btnConfigurar;
 	private JButton btnSalvarLog;
-	private Tarefa tarefaAssociada;
+	private TarefaJira tarefaAssociada;
 
 	/**
 	 * Create the application.
@@ -110,7 +110,7 @@ public class JanelaLog {
 	}
 
 	private void textoAlterado(String texto) {
-		List<Tarefa> tarefas = associadorTarefa.procurarTarefasRelacionadas(texto, false);
+		List<TarefaJira> tarefas = associadorTarefa.procurarTarefasRelacionadas(texto, false);
 		if (tarefas.size() > 0) {
 			definirTarefaAssociada(tarefas.get(0));
 		} else {
@@ -118,7 +118,7 @@ public class JanelaLog {
 		}
 	}
 
-	private void definirTarefaAssociada(Tarefa tarefa) {
+	private void definirTarefaAssociada(TarefaJira tarefa) {
 		tarefaAssociada = tarefa;
 		if(tarefa == null ) {
 			lblAtividadeRelacionada.setText(DESCRICAO_ATIVIDADE_NAO_ASSOCIADA);

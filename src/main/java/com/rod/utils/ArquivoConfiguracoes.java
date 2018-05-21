@@ -9,6 +9,7 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.nio.file.StandardOpenOption;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
@@ -27,7 +28,7 @@ public class ArquivoConfiguracoes {
 		}
 		return config;
 	}
-	
+
 	public static List<TarefaJira> obterTarefas() throws FileNotFoundException, IOException {
 		return obterConfiguracoes().getTarefas();
 	}
@@ -51,8 +52,11 @@ public class ArquivoConfiguracoes {
 				Gson gson = new Gson();
 				config = gson.fromJson(bufferedReader, Configuracoes.class);
 			}
-		} else {
+		}
+
+		if (config == null) {
 			config = new Configuracoes();
+			config.setTarefas(new ArrayList<TarefaJira>());
 		}
 	}
 }

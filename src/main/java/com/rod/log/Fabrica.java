@@ -6,6 +6,7 @@ import java.util.List;
 import java.util.function.Function;
 
 import com.rod.log.acoes.GravacaoLog;
+import com.rod.log.acoes.ResumoAtividades;
 
 public class Fabrica {
 	List<Function<String[], Runnable>> acoes;
@@ -17,7 +18,7 @@ public class Fabrica {
 	private void inicializarAcoes() {
 		acoes = new ArrayList<>();
 		acoes.add(args -> args.length == 0 ? new GravacaoLog() : null);
-		acoes.add(args -> args.length == 0 ? new ResumoAtividades() : null);
+		acoes.add(args -> args.length == 1 && "analisar".equals(args[0]) ? new ResumoAtividades(args) : null);
 	}
 
 	public Runnable criar(String[] args) {

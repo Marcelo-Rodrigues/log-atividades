@@ -15,6 +15,7 @@ import com.rod.log.controle.AssociadorTarefaJira;
 import com.rod.log.janelas.JanelaConfiguracoes;
 import com.rod.log.janelas.JanelaLog;
 import com.rod.utils.ArquivoConfiguracoes;
+import com.rod.utils.ArquivoLog;
 import com.rod.utils.Serializacao;
 
 public class GravacaoLog implements Runnable {
@@ -45,16 +46,14 @@ public class GravacaoLog implements Runnable {
 				@Override
 				public void actionPerformed(ActionEvent e) {
 					try {
-						final Path path = Paths.get("logAtividades.json");
-						Files.write(path, Arrays.asList(Serializacao.serializar(janela.obterLog())),
-								StandardCharsets.UTF_8,
-								Files.exists(path) ? StandardOpenOption.APPEND : StandardOpenOption.CREATE);
+						ArquivoLog.gravarLog(janela.obterLog());
 					} catch (IOException ex) {
 						ex.printStackTrace();
 					}
 
 					janela.fecharJanela();
 				}
+
 			});
 			janela.exibir();
 

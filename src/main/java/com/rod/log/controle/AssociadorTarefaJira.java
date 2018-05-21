@@ -17,7 +17,7 @@ public class AssociadorTarefaJira implements AssociadorTarefa {
 	 * @see com.rod.log.controle.AssociadorTarefas#procurarTarefasRelacionadas(java.lang.String, boolean)
 	 */
 	@Override
-	public List<Tarefa> procurarTarefasRelacionadas(String descricaoAtividade, boolean caseSensitive) {
+	public List<TarefaJira> procurarTarefasRelacionadas(String descricaoAtividade, boolean caseSensitive) {
 		String comparacao = caseSensitive ? descricaoAtividade : descricaoAtividade.toLowerCase();
 		
 		return tarefasJira.stream().filter(tarefa->
