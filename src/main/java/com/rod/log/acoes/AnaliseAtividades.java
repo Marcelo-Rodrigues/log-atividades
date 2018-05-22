@@ -1,12 +1,9 @@
 package com.rod.log.acoes;
 
-import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashMap;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
-
-import com.rod.log.Tarefa;
 
 public class AnaliseAtividades {
 	public Collection<ApontamentoAtividade> analisar(List<EntradaLog> entradasLog) {

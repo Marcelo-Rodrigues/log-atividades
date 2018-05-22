@@ -1,7 +1,5 @@
 package com.rod.log;
 
-import java.util.Date;
-
 public abstract class Tarefa {
 	String titulo;
 	String descricao;

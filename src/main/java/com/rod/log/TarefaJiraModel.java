@@ -2,12 +2,16 @@ package com.rod.log;
 
 import java.util.List;
 
-import javax.swing.JOptionPane;
 import javax.swing.table.AbstractTableModel;
 
 public class TarefaJiraModel extends AbstractTableModel
 	{
-	    private final List<TarefaJira> tarefasJira;
+	    /**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
+		private final List<TarefaJira> tarefasJira;
 	     
 	    private final String[] columnNames = new String[] {
 	    		"Titulo", "Descrição", "Palavra Chave", "Número da Tarefa (Jira)"

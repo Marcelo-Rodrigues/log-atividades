@@ -1,9 +1,10 @@
 package com.rod.utils;
 
 import java.io.BufferedReader;
+import java.io.FileInputStream;
 import java.io.FileNotFoundException;
-import java.io.FileReader;
 import java.io.IOException;
+import java.io.InputStreamReader;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Path;
@@ -47,11 +48,10 @@ public class ArquivoConfiguracoes {
 
 	public static void lerConfig() throws FileNotFoundException, IOException {
 		if (Files.exists(DIRETORIO_ARQUIVO)) {
-			try (FileReader fr = new FileReader(NOME_ARQUIVO)) {
-				BufferedReader bufferedReader = new BufferedReader(fr);
-				Gson gson = new Gson();
-				config = gson.fromJson(bufferedReader, Configuracoes.class);
-			}
+			BufferedReader bufferedReader = new BufferedReader(
+					new InputStreamReader(new FileInputStream(NOME_ARQUIVO), "UTF-8"));
+			Gson gson = new Gson();
+			config = gson.fromJson(bufferedReader, Configuracoes.class);
 		}
 
 		if (config == null) {

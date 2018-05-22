@@ -7,7 +7,6 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.FileNotFoundException;
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.List;
 
 import javax.swing.Box;
@@ -18,14 +17,13 @@ import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
+import javax.swing.JTabbedPane;
 import javax.swing.JTable;
 import javax.swing.border.EmptyBorder;
-import javax.swing.table.DefaultTableModel;
 
 import com.rod.log.TarefaJira;
 import com.rod.log.TarefaJiraModel;
 import com.rod.utils.ArquivoConfiguracoes;
-import javax.swing.JTabbedPane;
 
 public class JanelaConfiguracoes extends JDialog {
 
