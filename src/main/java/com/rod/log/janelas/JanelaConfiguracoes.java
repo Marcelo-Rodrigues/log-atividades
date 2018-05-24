@@ -60,7 +60,7 @@ public class JanelaConfiguracoes extends JDialog {
 
 		tarefas = ArquivoConfiguracoes.obterTarefas();
 		model = new TarefaJiraModel(tarefas);
-		
+
 		table = new JTable(model);
 		table.putClientProperty("terminateEditOnFocusLost", Boolean.TRUE);
 
@@ -76,6 +76,7 @@ public class JanelaConfiguracoes extends JDialog {
 		panel_1.add(horizontalStrut);
 
 		JButton btnSalvar = new JButton("Salvar");
+		btnSalvar.setMnemonic('s');
 		btnSalvar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				try {
@@ -92,11 +93,13 @@ public class JanelaConfiguracoes extends JDialog {
 			}
 		});
 		panel_1.add(btnSalvar);
+		getRootPane().setDefaultButton(btnSalvar);
 
 		Component horizontalStrut_2 = Box.createHorizontalStrut(20);
 		panel_1.add(horizontalStrut_2);
 
 		JButton btnIncluir = new JButton("Incluir");
+		btnIncluir.setMnemonic('i');
 		btnIncluir.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				criarLinha();
@@ -105,6 +108,7 @@ public class JanelaConfiguracoes extends JDialog {
 		panel_1.add(btnIncluir);
 
 		JButton btnExcluir = new JButton("Excluir");
+		btnExcluir.setMnemonic('e');
 		btnExcluir.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				removerLinha();
@@ -116,6 +120,12 @@ public class JanelaConfiguracoes extends JDialog {
 		panel_1.add(horizontalGlue);
 
 		JButton btnCancelar = new JButton("Cancelar");
+		btnCancelar.setMnemonic('c');
+		btnCancelar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				dispose();
+			}
+		});
 		panel_1.add(btnCancelar);
 
 		Component horizontalStrut_1 = Box.createHorizontalStrut(20);
@@ -126,8 +136,8 @@ public class JanelaConfiguracoes extends JDialog {
 
 	private void criarLinha() {
 		tarefas.add(new TarefaJira());
-		if (table.isEditing())
-		    table.getCellEditor().stopCellEditing();
+		model.fireTableDataChanged();
+		table.editCellAt(table.getRowCount() - 1, 0);
 	}
 
 	private void removerLinha() {
@@ -137,44 +147,15 @@ public class JanelaConfiguracoes extends JDialog {
 					JOptionPane.INFORMATION_MESSAGE);
 		} else {
 			tarefas.remove(linhaSelecionada);
+			model.fireTableDataChanged();
 		}
 	}
 
-	/*
-	 * private void atualizarTabela(List<TarefaJira> atividades) { for
-	 * (TarefaJira atividade : atividades) { Object[] o = new Object[4]; o[0] =
-	 * atividade.getTitulo(); o[1] = atividade.getDescricao(); o[2] =
-	 * atividade.getPalavraChave(); o[3] = atividade.getNumeroTarefa();
-	 * model.addRow(o); } }
-	 */
-
 	private boolean salvarAlteracoes() throws FileNotFoundException, IOException {
-		/*List<TarefaJira> novasTarefas = new ArrayList<>();
-		table.updateUI();
-		for (int linha = 0; linha < model.getRowCount(); linha++) {
-			TarefaJira tarefa = new TarefaJira();
-			tarefa.setTitulo((String) table.getValueAt(linha, 0));
-			tarefa.setDescricao((String) table.getValueAt(linha, 1));
-			tarefa.setPalavraChave((String) table.getValueAt(linha, 2));
 
-			try {
-				tarefa.setNumeroTarefa((int) table.getValueAt(linha, 3));
-			} catch (ClassCastException e) {
-				JOptionPane.showMessageDialog(this, String
-						.format("Número de tarefa inválido para a tarefa %s (linha %d)", tarefa.getTitulo(), linha),
-						"Salvar", JOptionPane.ERROR_MESSAGE);
-				return false;
-			}
-
-			novasTarefas.add(tarefa);
-		}
-
-		List<TarefaJira> tarefas = ArquivoConfiguracoes.obterTarefas();
-		tarefas.clear();
-		tarefas.addAll(novasTarefas);*/
 		if (table.isEditing())
-		    table.getCellEditor().stopCellEditing();
-		
+			table.getCellEditor().stopCellEditing();
+
 		try {
 			ArquivoConfiguracoes.salvarTarefas(tarefas);
 
