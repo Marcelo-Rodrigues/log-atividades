@@ -37,7 +37,7 @@ public class ArquivoConfiguracoes {
 	public static void salvar(Configuracoes configuracoes) throws IOException {
 
 		Files.write(DIRETORIO_ARQUIVO, Arrays.asList(Serializacao.serializar(configuracoes)), StandardCharsets.UTF_8,
-				StandardOpenOption.TRUNCATE_EXISTING);
+				StandardOpenOption.CREATE, StandardOpenOption.TRUNCATE_EXISTING );
 	}
 
 	public static void salvarTarefas(List<TarefaJira> novasTarefas) throws IOException {

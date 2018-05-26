@@ -10,6 +10,8 @@ import javax.swing.border.EmptyBorder;
 import javax.swing.JTextArea;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import javax.swing.JScrollPane;
+import javax.swing.ScrollPaneConstants;
 
 public class JanelaResumoDia extends JDialog {
 
@@ -37,15 +39,15 @@ public class JanelaResumoDia extends JDialog {
 	 * Create the dialog.
 	 */
 	public JanelaResumoDia() {
-		setBounds(100, 100, 450, 300);
+		setBounds(100, 100, 600, 300);
 		getContentPane().setLayout(new BorderLayout());
 		contentPanel.setBorder(new EmptyBorder(5, 5, 5, 5));
 		getContentPane().add(contentPanel, BorderLayout.CENTER);
 		contentPanel.setLayout(new BorderLayout(0, 0));
-		{
-			textArea = new JTextArea();
-			contentPanel.add(textArea, BorderLayout.CENTER);
-		}
+		textArea = new JTextArea();
+		contentPanel.add(textArea, BorderLayout.CENTER);
+		textArea.setLineWrap(true);
+		textArea.setWrapStyleWord(true);
 		{
 			JPanel buttonPane = new JPanel();
 			buttonPane.setLayout(new FlowLayout(FlowLayout.RIGHT));

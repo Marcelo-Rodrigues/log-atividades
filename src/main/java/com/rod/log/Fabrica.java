@@ -17,10 +17,10 @@ public class Fabrica {
 
 	private void inicializarAcoes() {
 		acoes = new ArrayList<>();
-		acoes.add(args -> args.length == 0 ? new GravacaoLog() : null);
-		acoes.add(args -> (args.length >= 1 && args.length <= 2) && "analisar".equals(args[0])
-				? new ResumoAtividades(args) : null);
+		acoes.add(GravacaoLog.obterInicializador());
+		acoes.add(ResumoAtividades.obterInicializador());
 	}
+
 
 	public Runnable criar(String[] args) {
 		for (Function<String[], Runnable> acao : acoes) {

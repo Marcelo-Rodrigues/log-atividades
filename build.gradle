@@ -51,5 +51,5 @@ launch4j {
 	outputDir = "libs"
     icon = "${projectDir}/src/main/resources/tasks.ico"
   	mainClassName = project.mainClassName
-	jar = "libs/${project.tasks.jar.archiveName}"
+	jar = "${buildDir}/libs/${project.tasks.jar.archiveName}"
 }

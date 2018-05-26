@@ -16,7 +16,8 @@ public class TarefaJiraModel extends AbstractTableModel
 	    private final String[] columnNames = new String[] {
 	    		"Titulo", "Descrição", "Palavra Chave", "Número da Tarefa (Jira)"
 	    };
-	    private final Class[] columnClass = new Class[] {
+	    @SuppressWarnings("rawtypes")
+		private final Class[] columnClass = new Class[] {
 	        String.class, String.class, String.class, Integer.class
 	    };
 	 

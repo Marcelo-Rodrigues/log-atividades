@@ -15,6 +15,10 @@ import java.awt.event.ActionEvent;
 
 public class JanelaSobre extends JDialog {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private static final String ICONE_JANELA = "/copyright.png";
 	private final JPanel contentPanel = new JPanel();	
 

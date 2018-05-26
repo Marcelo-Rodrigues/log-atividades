@@ -4,6 +4,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.util.function.Function;
 
 import com.rod.log.controle.AssociadorTarefaJira;
 import com.rod.log.janelas.JanelaConfiguracoes;
@@ -12,6 +13,10 @@ import com.rod.utils.ArquivoConfiguracoes;
 import com.rod.utils.ArquivoLog;
 
 public class GravacaoLog implements Runnable {
+	public static Function<String[], Runnable> obterInicializador() {
+		return args -> args.length == 0 ? new GravacaoLog() : null;
+	}
+	
 	public void run() {
 
 		JanelaLog janela;
@@ -26,10 +31,8 @@ public class GravacaoLog implements Runnable {
 						janela = new JanelaConfiguracoes();
 						janela.exibir();
 					} catch (FileNotFoundException e1) {
-						// TODO Auto-generated catch block
 						e1.printStackTrace();
 					} catch (IOException e1) {
-						// TODO Auto-generated catch block
 						e1.printStackTrace();
 					}
 				}

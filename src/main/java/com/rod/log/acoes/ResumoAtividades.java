@@ -6,6 +6,7 @@ import java.time.ZoneId;
 import java.time.format.DateTimeFormatter;
 import java.time.temporal.ChronoUnit;
 import java.util.Date;
+import java.util.function.Function;
 
 import com.rod.log.janelas.JanelaResumoDia;
 import com.rod.utils.ArquivoLog;
@@ -13,6 +14,11 @@ import com.rod.utils.ArquivoLog;
 public class ResumoAtividades implements Runnable {
 	final int diasReferencia;
 
+	public static Function<String[], Runnable> obterInicializador() {
+		return args -> (args.length >= 1 && args.length <= 2) && "analisar".equals(args[0])
+				? new ResumoAtividades(args) : null;
+	}
+	
 	public ResumoAtividades(String[] args) {
 		diasReferencia = (args.length > 1) ? Integer.parseInt(args[1]) : 0;
 	}

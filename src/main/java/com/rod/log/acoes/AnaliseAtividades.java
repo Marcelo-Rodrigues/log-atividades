@@ -1,5 +1,6 @@
 package com.rod.log.acoes;
 
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashMap;
 import java.util.List;
@@ -34,7 +35,7 @@ public class AnaliseAtividades {
 			}
 
 		}
-		Collection<ApontamentoAtividade> todosApontamentos = apontamentosAtividade.values();
+		List<ApontamentoAtividade> todosApontamentos = new ArrayList<>(apontamentosAtividade.values());
 
 		if (apontamentoNaoRelacionado != null)
 			todosApontamentos.add(apontamentoNaoRelacionado);
