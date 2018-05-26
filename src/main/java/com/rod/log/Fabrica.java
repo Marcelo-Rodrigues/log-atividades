@@ -5,8 +5,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.function.Function;
 
-import com.rod.log.acoes.GravacaoLog;
-import com.rod.log.acoes.ResumoAtividades;
+import com.rod.log.actions.GravacaoLog;
+import com.rod.log.actions.ResumoAtividades;
 
 public class Fabrica {
 	List<Function<String[], Runnable>> acoes;

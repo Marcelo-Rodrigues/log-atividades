@@ -1,4 +1,4 @@
-package com.rod.log.acoes;
+package com.rod.log.actions;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -6,9 +6,9 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.function.Function;
 
-import com.rod.log.controle.AssociadorTarefaJira;
-import com.rod.log.janelas.JanelaConfiguracoes;
-import com.rod.log.janelas.JanelaLog;
+import com.rod.log.service.AssociadorTarefaJira;
+import com.rod.log.ui.JanelaConfiguracoes;
+import com.rod.log.ui.JanelaLog;
 import com.rod.utils.ArquivoConfiguracoes;
 import com.rod.utils.ArquivoLog;
 

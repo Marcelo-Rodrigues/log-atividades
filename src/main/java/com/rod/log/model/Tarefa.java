@@ -1,4 +1,4 @@
-package com.rod.log;
+package com.rod.log.model;
 
 public abstract class Tarefa {
 	String titulo;

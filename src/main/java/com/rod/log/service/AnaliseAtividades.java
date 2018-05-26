@@ -1,10 +1,13 @@
-package com.rod.log.acoes;
+package com.rod.log.service;
 
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashMap;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
+
+import com.rod.log.model.ApontamentoAtividade;
+import com.rod.log.model.EntradaLog;
 
 public class AnaliseAtividades {
 	public Collection<ApontamentoAtividade> analisar(List<EntradaLog> entradasLog) {
@@ -44,7 +47,7 @@ public class AnaliseAtividades {
 	}
 
 	private long calcularTempoMinutos(EntradaLog log1, EntradaLog log2) {
-		long diffInMillies = log2.data.getTime() - log1.data.getTime();
+		long diffInMillies = log2.getData().getTime() - log1.getData().getTime();
 		return TimeUnit.MINUTES.convert(diffInMillies, TimeUnit.MILLISECONDS);
 	}
 }

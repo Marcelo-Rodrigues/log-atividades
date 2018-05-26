@@ -1,8 +1,6 @@
-package com.rod.log.acoes;
+package com.rod.log.model;
 
 import java.util.List;
-
-import com.rod.log.TarefaJira;
 
 public class Configuracoes {
 	List<TarefaJira> tarefas;

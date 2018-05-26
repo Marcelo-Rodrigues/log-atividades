@@ -1,8 +1,8 @@
-package com.rod.log.controle;
+package com.rod.log.service;
 
 import java.util.List;
 
-import com.rod.log.TarefaJira;
+import com.rod.log.model.TarefaJira;
 
 public interface AssociadorTarefa {
 

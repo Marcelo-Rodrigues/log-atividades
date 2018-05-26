@@ -1,8 +1,6 @@
-package com.rod.log.acoes;
+package com.rod.log.model;
 
 import java.util.Date;
-
-import com.rod.log.TarefaJira;
 
 public class EntradaLog {
 	Date data;

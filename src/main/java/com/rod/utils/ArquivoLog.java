@@ -12,7 +12,7 @@ import java.util.Date;
 import java.util.List;
 import java.util.stream.Collectors;
 
-import com.rod.log.acoes.EntradaLog;
+import com.rod.log.model.EntradaLog;
 
 public class ArquivoLog {
 	private static final String NOME_ARQUIVO_LOG = "logAtividades.json";

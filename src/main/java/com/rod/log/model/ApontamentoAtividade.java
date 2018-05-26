@@ -1,7 +1,4 @@
-package com.rod.log.acoes;
-
-import com.rod.log.Tarefa;
-import com.rod.log.TarefaJira;
+package com.rod.log.model;
 
 public class ApontamentoAtividade {
 	long totalMinutos;
@@ -22,7 +19,7 @@ public class ApontamentoAtividade {
 		return totalMinutos;
 	}
 
-	public Tarefa getTarefa() {
+	public TarefaJira getTarefa() {
 		return tarefa;
 	}
 

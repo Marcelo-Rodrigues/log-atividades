@@ -15,8 +15,8 @@ import java.util.Arrays;
 import java.util.List;
 
 import com.google.gson.Gson;
-import com.rod.log.TarefaJira;
-import com.rod.log.acoes.Configuracoes;
+import com.rod.log.model.Configuracoes;
+import com.rod.log.model.TarefaJira;
 
 public class ArquivoConfiguracoes {
 	private static Configuracoes config = null;

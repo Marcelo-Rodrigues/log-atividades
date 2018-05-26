@@ -1,4 +1,4 @@
-package com.rod.log.janelas;
+package com.rod.log.ui;
 
 import java.awt.BorderLayout;
 import java.awt.Component;
@@ -6,6 +6,8 @@ import java.awt.Toolkit;
 import java.awt.Window.Type;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.IOException;
+import java.time.Instant;
 import java.util.List;
 
 import javax.swing.Box;
@@ -14,9 +16,10 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JTextArea;
 
-import com.rod.log.TarefaJira;
-import com.rod.log.acoes.EntradaLog;
-import com.rod.log.controle.AssociadorTarefa;
+import com.rod.log.actions.ResumoAtividades;
+import com.rod.log.model.EntradaLog;
+import com.rod.log.model.TarefaJira;
+import com.rod.log.service.AssociadorTarefa;
 
 public class JanelaLog {
 
@@ -96,6 +99,18 @@ public class JanelaLog {
 			}
 		});
 		horizontalBox.add(button);
+		
+		JButton btnDia = new JButton("Dia");
+		btnDia.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				try {
+					new ResumoAtividades().exibirResumoDia(Instant.now());
+				} catch (IOException e) {
+					e.printStackTrace();
+				}
+			}
+		});
+		horizontalBox.add(btnDia);
 
 		btnSalvarLog = new JButton("Salvar log");
 		btnSalvarLog.setMnemonic('s');

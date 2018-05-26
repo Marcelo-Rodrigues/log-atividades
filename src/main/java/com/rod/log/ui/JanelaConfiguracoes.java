@@ -1,4 +1,4 @@
-package com.rod.log.janelas;
+package com.rod.log.ui;
 
 import java.awt.BorderLayout;
 import java.awt.Component;
@@ -21,8 +21,8 @@ import javax.swing.JTabbedPane;
 import javax.swing.JTable;
 import javax.swing.border.EmptyBorder;
 
-import com.rod.log.TarefaJira;
-import com.rod.log.TarefaJiraModel;
+import com.rod.log.model.TarefaJira;
+import com.rod.log.model.TarefaJiraModel;
 import com.rod.utils.ArquivoConfiguracoes;
 
 public class JanelaConfiguracoes extends JDialog {

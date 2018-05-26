@@ -1,4 +1,4 @@
-package com.rod.log.janelas;
+package com.rod.log.ui;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
