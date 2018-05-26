@@ -4,3 +4,5 @@ build/
 .gradle/
 gradle/
 .settings/
+atividadesJira.json
+logAtividades.json

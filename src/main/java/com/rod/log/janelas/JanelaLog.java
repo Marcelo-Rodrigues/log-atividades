@@ -20,7 +20,7 @@ import com.rod.log.controle.AssociadorTarefa;
 
 public class JanelaLog {
 
-	private static final String ICONE_JANELA = "/tasksdone.png";
+	private static final String ICONE_JANELA = "/tasks.png";
 	private static final String DESCRICAO_ATIVIDADE_NAO_ASSOCIADA = "<html>Insira na descrição a palavra chave para associar uma atividade</html>";
 	private AssociadorTarefa associadorTarefa;
 	private JFrame frame;
@@ -88,6 +88,14 @@ public class JanelaLog {
 
 		Component horizontalGlue = Box.createHorizontalGlue();
 		horizontalBox.add(horizontalGlue);
+		
+		JButton button = new JButton("?");
+		button.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				new JanelaSobre().setVisible(true);
+			}
+		});
+		horizontalBox.add(button);
 
 		btnSalvarLog = new JButton("Salvar log");
 		btnSalvarLog.setMnemonic('s');

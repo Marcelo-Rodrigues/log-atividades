@@ -27,7 +27,7 @@ import com.rod.utils.ArquivoConfiguracoes;
 
 public class JanelaConfiguracoes extends JDialog {
 
-	private static final String ICONE_JANELA = "/box-config-icon.png";
+	private static final String ICONE_JANELA = "/toolbox.png";
 	/**
 	 * 
 	 */
