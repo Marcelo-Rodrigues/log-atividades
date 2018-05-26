@@ -11,11 +11,16 @@ Log de atividades para metricas exatas de tempo em cada atividade diaria
 ```sh
 git clone git@github.com:Marcelo-Rodrigues/log-atividades.git
 cd log-atividades/
-gradle build
+gradle
 ```
 
 2. Executar o programa com o comando:
 
+Para Linux:
 ```sh
 java -jar ./build/libs/log-atividades-1.0.jar
+```
+Para Windows:
+```sh
+./build/libs/log-atividades.exe
 ```
