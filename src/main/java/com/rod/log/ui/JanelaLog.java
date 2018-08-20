@@ -133,6 +133,10 @@ public class JanelaLog {
 	}
 
 	private void textoAlterado(String texto) {
+		atualizarAssociacoes(texto);
+	}
+
+	private void atualizarAssociacoes(String texto) {
 		List<TarefaJira> tarefas = associadorTarefa.procurarTarefasRelacionadas(texto, false);
 		if (tarefas.size() > 0) {
 			definirTarefaAssociada(tarefas.get(0));
@@ -148,7 +152,6 @@ public class JanelaLog {
 			lblAtividadeRelacionada.setToolTipText(null);
 		} else {
 			lblAtividadeRelacionada.setText(tarefa.getTitulo());
-			lblAtividadeRelacionada.setToolTipText(tarefa.getDescricao());
 		}
 	}
 
@@ -170,6 +173,10 @@ public class JanelaLog {
 
 	public void exibir() {
 		frame.setVisible(true);
+	}
+
+	public void atualizarAssociacoes() {
+		atualizarAssociacoes(txtLog.getText());
 	}
 
 }

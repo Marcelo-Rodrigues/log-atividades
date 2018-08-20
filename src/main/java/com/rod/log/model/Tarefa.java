@@ -2,7 +2,6 @@ package com.rod.log.model;
 
 public abstract class Tarefa {
 	String titulo;
-	String descricao;
 	String palavraChave;
 	
 	public String getTitulo() {
@@ -10,12 +9,6 @@ public abstract class Tarefa {
 	}
 	public void setTitulo(String titulo) {
 		this.titulo = titulo;
-	}
-	public String getDescricao() {
-		return descricao;
-	}
-	public void setDescricao(String descricao) {
-		this.descricao = descricao;
 	}
 	public String getPalavraChave() {
 		return palavraChave;

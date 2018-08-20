@@ -29,7 +29,6 @@ public class ResumoAtividades implements Runnable {
 		try {
 			exibirResumoDia(diasReferencia);
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 	}

@@ -26,10 +26,11 @@ public class GravacaoLog implements Runnable {
 			janela.addConfigurarListener(new ActionListener() {
 				@Override
 				public void actionPerformed(ActionEvent e) {
-					JanelaConfiguracoes janela;
+					JanelaConfiguracoes janelaConfiguracoes;
 					try {
-						janela = new JanelaConfiguracoes();
-						janela.exibir();
+						janelaConfiguracoes = new JanelaConfiguracoes();
+						janelaConfiguracoes.exibir();
+						janela.atualizarAssociacoes();
 					} catch (FileNotFoundException e1) {
 						e1.printStackTrace();
 					} catch (IOException e1) {

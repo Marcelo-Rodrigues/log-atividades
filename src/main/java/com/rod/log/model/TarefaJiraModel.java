@@ -1,6 +1,7 @@
 package com.rod.log.model;
 
 import java.util.List;
+import java.util.function.Function;
 
 import javax.swing.table.AbstractTableModel;
 
@@ -14,11 +15,12 @@ public class TarefaJiraModel extends AbstractTableModel
 		private final List<TarefaJira> tarefasJira;
 	     
 	    private final String[] columnNames = new String[] {
-	    		"Titulo", "Descrição", "Palavra Chave", "Número da Tarefa (Jira)"
+	    		"Titulo", "Palavra Chave", "Número da Tarefa (Jira)"
 	    };
+	    	    
 	    @SuppressWarnings("rawtypes")
 		private final Class[] columnClass = new Class[] {
-	        String.class, String.class, String.class, Integer.class
+	        String.class, String.class, Integer.class
 	    };
 	 
 	    public TarefaJiraModel(List<TarefaJira> tarefas)
@@ -58,12 +60,9 @@ public class TarefaJiraModel extends AbstractTableModel
 	            return row.getTitulo();
 	        }
 	        else if(1 == columnIndex) {
-	            return row.getDescricao();
-	        }
-	        else if(2 == columnIndex) {
 	            return row.getPalavraChave();
 	        }
-	        else if(3 == columnIndex) {
+	        else if(2 == columnIndex) {
 	            return row.getNumeroTarefa();
 	        }
 	        
@@ -78,12 +77,9 @@ public class TarefaJiraModel extends AbstractTableModel
 	            row.setTitulo((String) aValue);
 	        }
 	        else if(1 == columnIndex) {
-	            row.setDescricao((String) aValue);
-	        }
-	        else if(2 == columnIndex) {
 	            row.setPalavraChave((String) aValue);
 	        }
-	        else if(3 == columnIndex) {
+	        else if(2 == columnIndex) {
 	            row.setNumeroTarefa((int) aValue);
 	        }
 	    }
