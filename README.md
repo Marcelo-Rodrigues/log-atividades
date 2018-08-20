@@ -15,12 +15,6 @@ gradle
 ```
 
 2. Executar o programa com o comando:
-
-Para Linux:
 ```sh
 java -jar ./build/libs/log-atividades-1.0.jar
-```
-Para Windows:
-```sh
-./build/libs/log-atividades.exe
 ```
