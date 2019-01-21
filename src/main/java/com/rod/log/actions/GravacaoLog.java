@@ -6,7 +6,7 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.function.Function;
 
-import com.rod.log.service.AssociadorTarefaJira;
+import com.rod.log.service.AssociadorTagPadrao;
 import com.rod.log.ui.JanelaConfiguracoes;
 import com.rod.log.ui.JanelaLog;
 import com.rod.utils.ArquivoConfiguracoes;
@@ -21,7 +21,7 @@ public class GravacaoLog implements Runnable {
 
 		JanelaLog janela;
 		try {
-			janela = new JanelaLog(new AssociadorTarefaJira(ArquivoConfiguracoes.obterTarefas()));
+			janela = new JanelaLog(new AssociadorTagPadrao(ArquivoConfiguracoes.obterTarefas()));
 
 			janela.addConfigurarListener(new ActionListener() {
 				@Override

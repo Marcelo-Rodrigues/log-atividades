@@ -1,16 +1,20 @@
 package com.rod.log.model;
 
+import java.util.Optional;
+
 public class ApontamentoAtividade {
 	long totalMinutos;
-	TarefaJira tarefa;
+	Optional<Tag> tagAssociada;
 	String logSumarizado;
 
 	public ApontamentoAtividade() {
-		
+		this.tagAssociada = Optional.empty();
+		this.totalMinutos = 0;
+		this.logSumarizado = null;
 	}
 	
-	public ApontamentoAtividade(TarefaJira tarefa, long totalMinutos, String log) {
-		this.tarefa = tarefa;
+	public ApontamentoAtividade(Optional<Tag> tagAssociada, long totalMinutos, String log) {
+		this.tagAssociada = tagAssociada;
 		this.totalMinutos = totalMinutos;
 		this.logSumarizado = log;
 	}
@@ -19,8 +23,11 @@ public class ApontamentoAtividade {
 		return totalMinutos;
 	}
 
-	public TarefaJira getTarefa() {
-		return tarefa;
+	public Optional<Tag> getTagAssociada() {
+		// Paliativo para funcionamento de serialização
+		if (tagAssociada == null)
+			tagAssociada = Optional.empty();
+		return tagAssociada;
 	}
 
 	public String getLogSumarizado() {
@@ -31,8 +38,8 @@ public class ApontamentoAtividade {
 		this.totalMinutos = totalMinutos;
 	}
 
-	public void setTarefa(TarefaJira tarefa) {
-		this.tarefa = tarefa;
+	public void setTarefa(Optional<Tag> tagAssociada) {
+		this.tagAssociada = tagAssociada;
 	}
 
 	public void setLogSumarizado(String logSumarizado) {

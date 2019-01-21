@@ -21,8 +21,8 @@ import javax.swing.JTabbedPane;
 import javax.swing.JTable;
 import javax.swing.border.EmptyBorder;
 
-import com.rod.log.model.TarefaJira;
-import com.rod.log.model.TarefaJiraModel;
+import com.rod.log.model.Tag;
+import com.rod.log.model.TagsFixasModel;
 import com.rod.utils.ArquivoConfiguracoes;
 
 public class JanelaConfiguracoes extends JDialog {
@@ -34,8 +34,8 @@ public class JanelaConfiguracoes extends JDialog {
 	private static final long serialVersionUID = 1L;
 	private JPanel contentPane;
 	private JTable table;
-	private List<TarefaJira> tarefas;
-	private TarefaJiraModel model;
+	private List<Tag> tags;
+	private TagsFixasModel model;
 	/* DefaultTableModel model; */
 
 	/**
@@ -58,8 +58,8 @@ public class JanelaConfiguracoes extends JDialog {
 		JTabbedPane tabbedPane = new JTabbedPane(JTabbedPane.TOP);
 		contentPane.add(tabbedPane, BorderLayout.CENTER);
 
-		tarefas = ArquivoConfiguracoes.obterTarefas();
-		model = new TarefaJiraModel(tarefas);
+		tags = ArquivoConfiguracoes.obterTarefas();
+		model = new TagsFixasModel(tags);
 
 		table = new JTable(model);
 		table.putClientProperty("terminateEditOnFocusLost", Boolean.TRUE);
@@ -135,7 +135,7 @@ public class JanelaConfiguracoes extends JDialog {
 	}
 
 	private void criarLinha() {
-		tarefas.add(new TarefaJira());
+		tags.add(new Tag());
 		model.fireTableDataChanged();
 		table.editCellAt(table.getRowCount() - 1, 0);
 	}
@@ -146,7 +146,7 @@ public class JanelaConfiguracoes extends JDialog {
 			JOptionPane.showMessageDialog(null, "Selecione uma linha para exclusão", "Exclusão",
 					JOptionPane.INFORMATION_MESSAGE);
 		} else {
-			tarefas.remove(linhaSelecionada);
+			tags.remove(linhaSelecionada);
 			model.fireTableDataChanged();
 		}
 	}
@@ -157,7 +157,7 @@ public class JanelaConfiguracoes extends JDialog {
 			table.getCellEditor().stopCellEditing();
 
 		try {
-			ArquivoConfiguracoes.salvarTarefas(tarefas);
+			ArquivoConfiguracoes.salvarTarefas(tags);
 
 		} catch (IOException e) {
 			JOptionPane.showMessageDialog(this, String

@@ -8,7 +8,6 @@ import java.util.concurrent.TimeUnit;
 
 import com.rod.log.model.ApontamentoAtividade;
 import com.rod.log.model.EntradaLog;
-import com.rod.log.model.TarefaJira;
 
 public class AnaliseAtividades {
 	public Collection<ApontamentoAtividade> analisar(List<EntradaLog> entradasLog) {
@@ -21,20 +20,19 @@ public class AnaliseAtividades {
 
 			long minutos = calcularTempoMinutos(log1, log2);
 
-			if (log2.getTarefaAssociada() == null) {
+			if (log2.getTagAssociada().isPresent()) {
+				if (apontamentosAtividade.containsKey(log2.getTagAssociada())) {
+					ApontamentoAtividade tarefaExistente = apontamentosAtividade.get(log2.getTagAssociada());
+					tarefaExistente.addLog(minutos, log2.getLog());
+				} else {
+					apontamentosAtividade.put(log2.getTagAssociada().get().getTag(),
+							new ApontamentoAtividade(log2.getTagAssociada(), minutos, log2.getLog()));
+				}
+			} else {
 				if (apontamentoNaoRelacionado == null) {
 					apontamentoNaoRelacionado = new ApontamentoAtividade(null, minutos, log2.getLog());
 				} else {
 					apontamentoNaoRelacionado.addLog(minutos, log2.getLog());
-				}
-			} else {
-				
-				if (apontamentosAtividade.containsKey(getIdEntradaLog(log2.getTarefaAssociada()))) {
-					ApontamentoAtividade tarefaExistente = apontamentosAtividade.get(getIdEntradaLog(log2.getTarefaAssociada()));
-					tarefaExistente.addLog(minutos, log2.getLog());
-				} else {
-					apontamentosAtividade.put(getIdEntradaLog(log2.getTarefaAssociada()),
-							new ApontamentoAtividade(log2.getTarefaAssociada(), minutos, log2.getLog()));
 				}
 			}
 
@@ -45,10 +43,6 @@ public class AnaliseAtividades {
 			todosApontamentos.add(apontamentoNaoRelacionado);
 
 		return todosApontamentos;
-	}
-	
-	private String getIdEntradaLog(TarefaJira tarefa) {
-		return String.format("%s [%d]", tarefa.getPalavraChave(),tarefa.getNumeroTarefa());
 	}
 
 	private long calcularTempoMinutos(EntradaLog log1, EntradaLog log2) {

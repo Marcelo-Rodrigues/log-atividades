@@ -5,17 +5,17 @@ import java.util.function.Function;
 
 import javax.swing.table.AbstractTableModel;
 
-public class TarefaJiraModel extends AbstractTableModel
+public class TagsFixasModel extends AbstractTableModel
 	{
 	    /**
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
 
-		private final List<TarefaJira> tarefasJira;
+		private final List<Tag> tarefasJira;
 	     
 	    private final String[] columnNames = new String[] {
-	    		"Titulo", "Palavra Chave", "Número da Tarefa (Jira)"
+	    		"Tag", "Descrição"
 	    };
 	    	    
 	    @SuppressWarnings("rawtypes")
@@ -23,7 +23,7 @@ public class TarefaJiraModel extends AbstractTableModel
 	        String.class, String.class, Integer.class
 	    };
 	 
-	    public TarefaJiraModel(List<TarefaJira> tarefas)
+	    public TagsFixasModel(List<Tag> tarefas)
 	    {
 	        this.tarefasJira = tarefas;
 	    }
@@ -55,15 +55,12 @@ public class TarefaJiraModel extends AbstractTableModel
 	    @Override
 	    public Object getValueAt(int rowIndex, int columnIndex)
 	    {
-	        TarefaJira row = tarefasJira.get(rowIndex);
+	        Tag row = tarefasJira.get(rowIndex);
 	        if(0 == columnIndex) {
-	            return row.getTitulo();
+	            return row.getTag();
 	        }
 	        else if(1 == columnIndex) {
-	            return row.getPalavraChave();
-	        }
-	        else if(2 == columnIndex) {
-	            return row.getNumeroTarefa();
+	            return row.getDescricao();
 	        }
 	        
 	        return null;
@@ -72,15 +69,12 @@ public class TarefaJiraModel extends AbstractTableModel
 	    @Override
 	    public void setValueAt(Object aValue, int rowIndex, int columnIndex)
 	    {
-	        TarefaJira row = tarefasJira.get(rowIndex);
+	        Tag row = tarefasJira.get(rowIndex);
 	        if(0 == columnIndex) {
-	            row.setTitulo((String) aValue);
+	            row.setTag((String) aValue);
 	        }
 	        else if(1 == columnIndex) {
-	            row.setPalavraChave((String) aValue);
-	        }
-	        else if(2 == columnIndex) {
-	            row.setNumeroTarefa((int) aValue);
+	            row.setDescricao((String) aValue);
 	        }
 	    }
 	    

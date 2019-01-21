@@ -17,8 +17,8 @@ public class DescritorAtividade {
 		StringBuilder strB = new StringBuilder();
 
 		analisadorAtividades.analisar(ArquivoLog.obterLogs(Date.from(dataReferencia))).stream().forEach(log -> {
-			String descTarefa = log.getTarefa() == null ? "<Sem tarefa no Jira>"
-					: String.format("[%d] %s", log.getTarefa().getNumeroTarefa(), log.getTarefa().getTitulo());
+			String descTarefa = log.getTagAssociada().isPresent() ? log.getTagAssociada().get().toString()
+					: "<Sem tag associada>";
 
 			strB.append(String.format("%s - %s:\n%s\n", descreverTempo(log.getTotalMinutos()), descTarefa,
 					log.getLogSumarizado()));

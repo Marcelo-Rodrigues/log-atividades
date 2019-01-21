@@ -1,25 +1,36 @@
 package com.rod.log.model;
 
 import java.util.Date;
+import java.util.Optional;
 
 public class EntradaLog {
 	Date data;
 	String log;
-	TarefaJira tarefaAssociada;
-	
-	public EntradaLog(String log, TarefaJira tarefaAssociada) {
+	private Optional<Tag> tagAssociada;
+
+	public EntradaLog() {
+		this.tagAssociada = Optional.empty();
+	}
+
+	public EntradaLog(String log, Optional<Tag> tagAssociada) {
 		this.data = new Date();
 		this.log = log;
-		this.tarefaAssociada = tarefaAssociada;
+		this.tagAssociada = tagAssociada;
 	}
-	
+
 	public Date getData() {
 		return data;
 	}
+
 	public String getLog() {
 		return log;
 	}
-	public TarefaJira getTarefaAssociada() {
-		return tarefaAssociada;
+
+	public Optional<Tag> getTagAssociada() {
+		return tagAssociada;
+	}
+
+	public void setTagAssociada(Optional<Tag> tagAssociada) {
+		this.tagAssociada = tagAssociada;
 	}
 }

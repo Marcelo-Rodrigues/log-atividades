@@ -3,13 +3,13 @@ package com.rod.log.model;
 import java.util.List;
 
 public class Configuracoes {
-	List<TarefaJira> tarefas;
+	List<Tag> tagsFixas;
 	
-	public List<TarefaJira> getTarefas() {
-		return tarefas;
+	public List<Tag> getTagsFixas() {
+		return tagsFixas;
 	}
 	
-	public void setTarefas(List<TarefaJira> tarefas) {
-		this.tarefas = tarefas;
+	public void setTagsFixas(List<Tag> tagsFixas) {
+		this.tagsFixas = tagsFixas;
 	}
 }

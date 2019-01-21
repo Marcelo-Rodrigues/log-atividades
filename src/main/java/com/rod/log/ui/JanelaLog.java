@@ -8,7 +8,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.IOException;
 import java.time.Instant;
-import java.util.List;
+import java.util.Optional;
 
 import javax.swing.Box;
 import javax.swing.JButton;
@@ -18,25 +18,25 @@ import javax.swing.JTextArea;
 
 import com.rod.log.actions.ResumoAtividades;
 import com.rod.log.model.EntradaLog;
-import com.rod.log.model.TarefaJira;
-import com.rod.log.service.AssociadorTarefa;
+import com.rod.log.model.Tag;
+import com.rod.log.service.AssociadorTag;
 
 public class JanelaLog {
 
 	private static final String ICONE_JANELA = "/tasks.png";
 	private static final String DESCRICAO_ATIVIDADE_NAO_ASSOCIADA = "<html>Insira na descrição a palavra chave para associar uma atividade</html>";
-	private AssociadorTarefa associadorTarefa;
+	private AssociadorTag associadorTarefa;
 	private JFrame frame;
 	private JLabel lblAtividadeRelacionada;
 	private JTextArea txtLog;
 	private JButton btnConfigurar;
 	private JButton btnSalvarLog;
-	private TarefaJira tarefaAssociada;
+	private Optional<Tag> tagAssociada;
 
 	/**
 	 * Create the application.
 	 */
-	public JanelaLog(AssociadorTarefa associadorTarefa) {
+	public JanelaLog(AssociadorTag associadorTarefa) {
 		this.associadorTarefa = associadorTarefa;
 		initialize();
 	}
@@ -137,21 +137,16 @@ public class JanelaLog {
 	}
 
 	private void atualizarAssociacoes(String texto) {
-		List<TarefaJira> tarefas = associadorTarefa.procurarTarefasRelacionadas(texto, false);
-		if (tarefas.size() > 0) {
-			definirTarefaAssociada(tarefas.get(0));
-		} else {
-			definirTarefaAssociada(null);
-		}
+		definirTarefaAssociada(associadorTarefa.procurarTagRelacionada(texto));
 	}
 
-	private void definirTarefaAssociada(TarefaJira tarefa) {
-		tarefaAssociada = tarefa;
-		if(tarefa == null ) {
+	private void definirTarefaAssociada(Optional<Tag> tag) {
+		tagAssociada = tag;
+		if( tag.isPresent() ) {
+			lblAtividadeRelacionada.setText(tag.get().toString());
+		} else {
 			lblAtividadeRelacionada.setText(DESCRICAO_ATIVIDADE_NAO_ASSOCIADA);
 			lblAtividadeRelacionada.setToolTipText(null);
-		} else {
-			lblAtividadeRelacionada.setText(tarefa.getTitulo());
 		}
 	}
 
@@ -164,7 +159,7 @@ public class JanelaLog {
 	}
 
 	public EntradaLog obterLog() {
-		return new EntradaLog(txtLog.getText(), tarefaAssociada);
+		return new EntradaLog(txtLog.getText(), tagAssociada);
 	}
 
 	public void fecharJanela() {

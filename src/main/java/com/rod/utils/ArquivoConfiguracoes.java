@@ -16,7 +16,7 @@ import java.util.List;
 
 import com.google.gson.Gson;
 import com.rod.log.model.Configuracoes;
-import com.rod.log.model.TarefaJira;
+import com.rod.log.model.Tag;
 
 public class ArquivoConfiguracoes {
 	private static Configuracoes config = null;
@@ -30,8 +30,8 @@ public class ArquivoConfiguracoes {
 		return config;
 	}
 
-	public static List<TarefaJira> obterTarefas() throws FileNotFoundException, IOException {
-		return obterConfiguracoes().getTarefas();
+	public static List<Tag> obterTarefas() throws FileNotFoundException, IOException {
+		return obterConfiguracoes().getTagsFixas();
 	}
 
 	public static void salvar(Configuracoes configuracoes) throws IOException {
@@ -40,9 +40,9 @@ public class ArquivoConfiguracoes {
 				StandardOpenOption.CREATE, StandardOpenOption.TRUNCATE_EXISTING );
 	}
 
-	public static void salvarTarefas(List<TarefaJira> novasTarefas) throws IOException {
+	public static void salvarTarefas(List<Tag> novasTarefas) throws IOException {
 		config = new Configuracoes();
-		config.setTarefas(novasTarefas);
+		config.setTagsFixas(novasTarefas);
 		salvar(config);
 	}
 
@@ -56,7 +56,7 @@ public class ArquivoConfiguracoes {
 
 		if (config == null) {
 			config = new Configuracoes();
-			config.setTarefas(new ArrayList<TarefaJira>());
+			config.setTagsFixas(new ArrayList<Tag>());
 		}
 	}
 }
